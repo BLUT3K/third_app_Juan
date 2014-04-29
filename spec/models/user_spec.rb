@@ -9,7 +9,7 @@ describe User do
 
 	it { should respond_to(:name) }
 	it { should respond_to(:email)}
-	it { should respond_to(:password_digest}
+	it { should respond_to(:password_digest)}
 	it { should respond_to(:password)}
 	it { should respond_to(:password_confirmation)}	
 	it { should respond_to(:authenticate)}	
@@ -55,7 +55,7 @@ describe User do
 	describe "when eamil address is taken" do
 		before do
 			user_with_same_email = @user.dup
-			user_with_same_email.email = @user.eamil.upcase
+			user_with_same_email.email = @user.email.upcase
 			user_with_same_email.save 
 		end
 
@@ -63,10 +63,10 @@ describe User do
 	end
 
 	describe "when password is not present" do 
-	  before { @user.password = @user.password_confirmtion = " "}.
+	  before { @user.password = @user.password_confirmation = " "}
 	  it { should_not be_valid }
 	end
-	decribe "when passwords mismatch" do
+	describe "when passwords mismatch" do
 		before { @user.password_confirmation = "mismatch"}
 		it { should_not be_valid }
 	end
